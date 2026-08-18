@@ -1,3 +1,24 @@
+---
+const ndaProjects = [
+  {
+    category: '01 / Under NDA',
+    meta: 'Ruby · product platform',
+    title: 'Confidential product platform',
+    description: 'Designing dependable workflows and infrastructure for a product whose details remain private.',
+    tags: ['Ruby', 'Rails', 'Product engineering'],
+    artClass: 'art-signal',
+  },
+  {
+    category: '02 / Under NDA',
+    meta: 'Ruby · internal systems',
+    title: 'Private operations toolkit',
+    description: 'Building calm, reliable tools that help a distributed team make complex everyday work feel simpler.',
+    tags: ['Ruby', 'Systems', 'Internal tools'],
+    artClass: 'art-pulse',
+  },
+];
+---
+
 <section id="work" class="work-section shell" aria-labelledby="work-title">
   <div class="section-heading">
     <p class="eyebrow">Selected work</p>
@@ -10,30 +31,64 @@
       <div class="project-content">
         <div class="project-meta"><span>01 / Civic technology</span><span class="repo-stats" aria-label="Repository metadata">Ruby · community project</span></div>
         <h3>Decidim Spam Detection</h3>
-        <p>A machine-learning backed moderation layer for participatory platforms — helping communities keep their conversations human.</p>
+        <p>A machine-learning-backed moderation layer for participatory platforms, helping communities keep their conversations human.</p>
         <div class="tag-row"><span>Ruby</span><span>Rails</span><span>Machine learning</span></div>
-        <a class="card-link" href="https://github.com/OpenSourcePolitics/decidim-spam_detection" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+        <a class="card-link" href="https://github.com/OpenSourcePolitics/decidim-spam_detection" target="_blank" rel="noreferrer">View the project <span aria-hidden="true">↗</span></a>
       </div>
     </article>
     <article class="project-card" data-repo="decidim/decidim">
       <div class="project-art art-grid" aria-hidden="true"><span class="grid-word">DECIDIM</span><span class="grid-cross cross-a"></span><span class="grid-cross cross-b"></span></div>
       <div class="project-content">
-        <div class="project-meta"><span>02 / Open source</span><span class="repo-stats">Ruby · Decidim ecosystem</span></div>
+        <div class="project-meta"><span>02 / Open-source ecosystem</span><span class="repo-stats">Ruby · Decidim ecosystem</span></div>
         <h3>Decidim</h3>
-        <p>Contributing to the digital infrastructure behind participatory democracy, citizen participation, and open government.</p>
+        <p>Contributing to the open-source ecosystem behind participatory democracy, citizen participation, and open government.</p>
         <div class="tag-row"><span>Ruby on Rails</span><span>Open source</span><span>Civic tech</span></div>
-        <a class="card-link" href="https://github.com/decidim/decidim" target="_blank" rel="noreferrer">Explore the framework <span aria-hidden="true">↗</span></a>
+        <a class="card-link" href="https://github.com/decidim/decidim" target="_blank" rel="noreferrer">Explore the ecosystem <span aria-hidden="true">↗</span></a>
       </div>
     </article>
     <article class="project-card">
       <div class="project-art art-pulse" aria-hidden="true"><span class="pulse-ring ring-a"></span><span class="pulse-ring ring-b"></span><span class="pulse-ring ring-c"></span><span class="pulse-center"></span></div>
       <div class="project-content">
-        <div class="project-meta"><span>03 / Side project</span><span class="repo-stats">Ruby · 2025</span></div>
+        <div class="project-meta"><span>03 / Personal experiment</span><span class="repo-stats">Ruby · 2025</span></div>
         <h3>vario-ping</h3>
-        <p>A tiny, curious experiment in sound and signal — proof that useful engineering can still leave room for wonder.</p>
+        <p>A small Ruby experiment in sound and signal — a reminder that useful engineering can still leave room for wonder.</p>
         <div class="tag-row"><span>Ruby</span><span>Audio</span><span>Experiment</span></div>
-        <a class="card-link" href="https://gist.github.com/armandfardeau" target="_blank" rel="noreferrer">View project activity <span aria-hidden="true">↗</span></a>
+        <a class="card-link" href="https://gist.github.com/armandfardeau" target="_blank" rel="noreferrer">See the experiment <span aria-hidden="true">↗</span></a>
       </div>
     </article>
   </div>
+
+  <section class="nda-section" aria-labelledby="nda-title">
+    <div class="nda-heading">
+      <p class="eyebrow">Private work</p>
+      <h3 id="nda-title">Under <em>NDA.</em></h3>
+      <p class="section-note">Selected work shared in outline, with the details kept private.</p>
+    </div>
+    <div class="project-grid nda-grid">
+      {ndaProjects.map((project) => (
+        <article class="project-card nda-card">
+          <div class={`project-art ${project.artClass}`} aria-hidden="true">
+            {project.artClass === 'art-signal' ? (
+              <>
+                <span class="signal-line"></span><span class="signal-node node-one"></span><span class="signal-node node-two"></span><span class="signal-label">PRIVATE / 01</span>
+              </>
+            ) : (
+              <>
+                <span class="pulse-ring ring-a"></span><span class="pulse-ring ring-b"></span><span class="pulse-ring ring-c"></span><span class="pulse-center"></span>
+              </>
+            )}
+          </div>
+          <div class="project-content">
+            <div class="project-meta"><span>{project.category}</span><span class="repo-stats">{project.meta}</span></div>
+            <h4>{project.title}</h4>
+            <p>{project.description}</p>
+            <div class="tag-row">
+              {project.tags.map((tag) => <span>{tag}</span>)}
+            </div>
+            <span class="nda-note">Details available on request</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 </section>
